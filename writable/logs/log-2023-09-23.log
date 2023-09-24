@@ -1,0 +1,30 @@
+CRITICAL - 2023-09-23 13:00:34 --> Invalid file: "music_form.php"
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 39.
+ 1 SYSTEMPATH\View\View.php(214): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('music_form.php')
+ 2 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('music_form', [], true)
+ 3 APPPATH\Controllers\MainController.php(37): view('music_form', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\MainController->saveMusic()
+ 5 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\MainController))
+ 6 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\CodeIgniter4\\Activities\\Under Development\\domingolab2\\lab2\\public\\index.php')
+CRITICAL - 2023-09-23 13:01:42 --> Invalid file: ".php"
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 39.
+ 1 SYSTEMPATH\View\View.php(214): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('.php')
+ 2 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('', [], true)
+ 3 APPPATH\Controllers\MainController.php(37): view('', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\MainController->saveMusic()
+ 5 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\MainController))
+ 6 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\CodeIgniter4\\Activities\\Under Development\\domingolab2\\lab2\\public\\index.php')
+CRITICAL - 2023-09-23 13:01:52 --> Invalid file: "/.php"
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 39.
+ 1 SYSTEMPATH\View\View.php(214): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('/.php')
+ 2 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('/', [], true)
+ 3 APPPATH\Controllers\MainController.php(37): view('/', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\MainController->saveMusic()
+ 5 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\MainController))
+ 6 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\CodeIgniter4\\Activities\\Under Development\\domingolab2\\lab2\\public\\index.php')
