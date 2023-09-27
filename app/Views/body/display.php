@@ -16,6 +16,9 @@
     <li data-src="<?= "/uploads/" . $result['file_path'] ?>">
       <span><?= $result['artist'] . ' - ' . $result['title'] ?></span>
       <button class="add-to-playlist-btn" data-music-id="<?= $result['music_id'] ?>" data-toggle="modal" data-target="#addToPlaylistModal"><i class="fa-solid fa-plus"></i></button>
+      <?php if($currentPlaylistId !== 0): ?>
+          <a href="<?php echo base_url('//remove/' . $result['playlist_music_id'] . '/' . $result['playlist_id']); ?>" class="btn btn-danger btn-sm"><i class="fa-solid fa-trash"></i> Remove from Playlist</a>
+      <?php endif; ?>
     </li>
   <?php endforeach; ?>
 </ul>

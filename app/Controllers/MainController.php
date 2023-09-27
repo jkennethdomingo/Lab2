@@ -20,6 +20,7 @@ class MainController extends BaseController
 
     public function index()
     {
+        $currentPlaylistId = $this->request->getVar('playlist_id') ?? 0;
         $searchQuery = $this->request->getGet('search');
         $playlistId = $this->request->getGet('playlist_id');
 
@@ -33,6 +34,7 @@ class MainController extends BaseController
 
         $data['playlists'] = $this->playlist->findAll();
         $data['searchQuery'] = $searchQuery;
+        $data['currentPlaylistId'] = $currentPlaylistId;
 
         return view('index', $data);
     }
@@ -40,6 +42,7 @@ class MainController extends BaseController
     public function playlist($playlistId)
     {
         $data = $this->fetchPlaylistAndSongs($playlistId);
+        $data['currentPlaylistId'] = $playlistId;
         $data['playlists'] = $this->playlist->findAll();
         return view('index', $data);
     }
@@ -47,7 +50,7 @@ class MainController extends BaseController
     private function fetchPlaylistAndSongs($playlistId)
     {
         $playlist = $this->playlist
-            ->select('playlist.playlist_id, playlist.name, music.music_id, music.title, music.artist, music.album, music.genre, music.file_path')
+            ->select('playlist.playlist_id, playlist.name, music.music_id, music.title, music.artist, music.album, music.genre, music.file_path, playlistmusic.playlist_music_id')
             ->join('playlistmusic', 'playlistmusic.playlist_id = playlist.playlist_id')
             ->join('Music', 'music.music_id = playlistMusic.music_id')
             ->where('playlist.playlist_id', $playlistId)
@@ -108,14 +111,25 @@ class MainController extends BaseController
 
     public function addToPlaylist()
     {
-        $data = [
-            'playlist_id' => $this->request->getVar('playlist'),
-            'music_id' => $this->request->getVar('musicId'),
-        ];
+        $playlist_id = $this->request->getVar('playlist');
+        $music_id = $this->request->getVar('musicId');
 
-        $this->ref->insert($data);
+        $existingRecord = $this->ref->where('playlist_id', $playlist_id)
+                                    ->where('music_id', $music_id)
+                                    ->first();
+
+        if (!$existingRecord) {
+            $data = [
+                'playlist_id' => $playlist_id,
+                'music_id' => $music_id,
+            ];
+
+            $this->ref->insert($data);
+        }
+
         return redirect()->to('/');
     }
+
 
     private function generateUniqueMp3FileName()
     {
@@ -128,5 +142,8 @@ class MainController extends BaseController
         return $newName;
     }
 
-    
+    public function remove($id, $pID){
+        $this->ref->delete($id);
+        return redirect()->to(base_url("/" . $pID));
+    }
 }

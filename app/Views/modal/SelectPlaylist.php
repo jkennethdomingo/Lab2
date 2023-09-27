@@ -7,9 +7,11 @@
       </div>
       <div class="modal-body">
         <br>
+        <a href="<?= base_url('/') ?>" class="playlist-link">All</a>
+        <br>
         <?php foreach ($playlists as $playlist) { ?>
-          <a href="<?= base_url('/' . $playlist['playlist_id']) ?>" class="playlist-link"><?= esc($playlist['name']) ?></a>
-          <br>
+            <a href="<?= base_url('/' . $playlist['playlist_id']) ?>" class="playlist-link"><?= esc($playlist['name']) ?></a>
+            <br>
         <?php } ?>
       </div>
       <div class="modal-footer">
